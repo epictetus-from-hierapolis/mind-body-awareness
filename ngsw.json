@@ -1,0 +1,91 @@
+{
+  "configVersion": 1,
+  "timestamp": 1773437484487,
+  "index": "/mind-body-awareness/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/mind-body-awareness/chunk-4O5FIFOP.js",
+        "/mind-body-awareness/chunk-7VYH33B3.js",
+        "/mind-body-awareness/chunk-ALETVNBI.js",
+        "/mind-body-awareness/chunk-C6Q5SG76.js",
+        "/mind-body-awareness/chunk-FK6H3RFT.js",
+        "/mind-body-awareness/chunk-RCWX3S7T.js",
+        "/mind-body-awareness/chunk-Z27M7K2C.js",
+        "/mind-body-awareness/favicon.ico",
+        "/mind-body-awareness/index.html",
+        "/mind-body-awareness/main-CFFLYHMN.js",
+        "/mind-body-awareness/manifest.webmanifest",
+        "/mind-body-awareness/styles-4HKMKTTA.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/mind-body-awareness/icons/icon-128x128.png",
+        "/mind-body-awareness/icons/icon-144x144.png",
+        "/mind-body-awareness/icons/icon-152x152.png",
+        "/mind-body-awareness/icons/icon-192x192.png",
+        "/mind-body-awareness/icons/icon-384x384.png",
+        "/mind-body-awareness/icons/icon-512x512.png",
+        "/mind-body-awareness/icons/icon-72x72.png",
+        "/mind-body-awareness/icons/icon-96x96.png"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/mind-body-awareness/chunk-4O5FIFOP.js": "5cd5f9664f3939454414145a0875a79ac66a6d4f",
+    "/mind-body-awareness/chunk-7VYH33B3.js": "cf4fb59259b5291ad0d101d21520be4bdd593f04",
+    "/mind-body-awareness/chunk-ALETVNBI.js": "fc8e54012ccf8ce55dc412aac91b6ce1c7d851a5",
+    "/mind-body-awareness/chunk-C6Q5SG76.js": "fd4fc33dfc3c6ef846db1272f907a0dbbbb1e374",
+    "/mind-body-awareness/chunk-FK6H3RFT.js": "3c538698719f1cf34410542b8c702bc484e025ee",
+    "/mind-body-awareness/chunk-RCWX3S7T.js": "2a6f83cadff9cf2848938aa3b2f37a9b582ec96a",
+    "/mind-body-awareness/chunk-Z27M7K2C.js": "c2f583d345e42063a3ba136d020d77aea95f8672",
+    "/mind-body-awareness/favicon.ico": "9c39f434fe1261f68c5e3eefdf734630d99c5670",
+    "/mind-body-awareness/icons/icon-128x128.png": "f912963bdc6d5a38d8f1dd0afbaab2ce8d657acb",
+    "/mind-body-awareness/icons/icon-144x144.png": "b155fd5f2fd5d2ea7760721063003c4cd95fd783",
+    "/mind-body-awareness/icons/icon-152x152.png": "eae6e0f0c8afb8aaae339e2a569b43e9238e5e6c",
+    "/mind-body-awareness/icons/icon-192x192.png": "15c4180454633880d98674aa7394656196c91584",
+    "/mind-body-awareness/icons/icon-384x384.png": "94a915751ef6c9282df9aea405ad679230631814",
+    "/mind-body-awareness/icons/icon-512x512.png": "1de182f76f7329dfa8f9fcdd1fdcdd695bea6a99",
+    "/mind-body-awareness/icons/icon-72x72.png": "aa88a6096bd973be7f6d7a5489bfa6bc2463f8c4",
+    "/mind-body-awareness/icons/icon-96x96.png": "7fb8f59c30ce2ff12c700321a0b39e14b3dc8f95",
+    "/mind-body-awareness/index.html": "b9e38ab6e4ae115111a57a783eb32637a63bc672",
+    "/mind-body-awareness/main-CFFLYHMN.js": "aa5a3ba39863f1a1ae495a8bfb08676856562d38",
+    "/mind-body-awareness/manifest.webmanifest": "c99d1a4c606bcc7ae61be791fb1b15ae8ebc6c10",
+    "/mind-body-awareness/styles-4HKMKTTA.css": "ae33229d467c52fcde1d2b84bf5ee310d59d6ef8"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ],
+  "navigationRequestStrategy": "performance"
+}
