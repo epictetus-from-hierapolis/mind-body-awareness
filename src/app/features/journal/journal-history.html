@@ -1,0 +1,108 @@
+<div class="history-container">
+    @if (records().length > 0) {
+    <div class="history-toolbar">
+        <div class="stats-compact">
+            <mat-icon>auto_stories</mat-icon>
+            <span class="count-number">{{ records().length }}</span>
+            <span class="count-label">{{ records().length === 1 ? 'reflectie' : 'reflectii' }}</span>
+        </div>
+        <span class="stats-message">
+            @if (records().length < 5) {
+                Continua sa te observi 🌱
+            } @else if (records().length < 20) {
+                Constientizarea creste 🌿
+            } @else {
+                Practica admirabila! 🌳
+            }
+        </span>
+        <button mat-icon-button [matMenuTriggerFor]="exportMenu" class="export-btn" title="Descarcă PDF">
+            <mat-icon>download</mat-icon>
+        </button>
+        <mat-menu #exportMenu="matMenu">
+            <button mat-menu-item (click)="pdfService.exportPdf(true)">
+                <mat-icon>palette</mat-icon>
+                <span>Premium PDF (Vibrant)</span>
+            </button>
+            <button mat-menu-item (click)="pdfService.exportPdf(false)">
+                <mat-icon>print</mat-icon>
+                <span>Print-friendly PDF (B&W)</span>
+            </button>
+        </mat-menu>
+    </div>
+    }
+
+    <div class="history-content-area" style="flex: 1; display: flex; flex-direction: column; min-height: 0;">
+        @if (records().length > 0) {
+        <cdk-virtual-scroll-viewport itemSize="180" minBufferPx="400" maxBufferPx="800" class="virtual-scroll-container"
+            (scrolledIndexChange)="onScroll()">
+            <mat-card *cdkVirtualFor="let record of (records() || [])" class="record-card">
+                @if (record) {
+                    <mat-card-header class="compact-header">
+                        <div class="header-text">
+                            <mat-card-title>{{ record.timestamp | date:'dd MMM yyyy, HH:mm' }}</mat-card-title>
+                            @if (record.rootCause) {
+                            <mat-card-subtitle><b>Cauză:</b> {{ record.rootCause }}</mat-card-subtitle>
+                            }
+                        </div>
+                        <button mat-icon-button color="warn" class="delete-btn" (click)="deleteEntry(record.id)">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                    </mat-card-header>
+
+                    <mat-card-content class="compact-content">
+
+                        @if (record.sensations.length > 0) {
+                        <div class="section">
+                            <span class="section-label">Senzații</span>
+                            <p class="inline-list">{{ record.sensations.join(', ') }}</p>
+                        </div>
+                        }
+
+                        @if (record.positiveEmotions.length > 0) {
+                        <div class="section emotion-section positive">
+                            <span class="section-label positive-label">✦ Emoții pozitive</span>
+                            <div class="emotion-tags">
+                                @for (e of record.positiveEmotions; track e) {
+                                <span class="tag tag-positive">{{ e }}</span>
+                                }
+                            </div>
+                        </div>
+                        }
+
+                        @if (record.negativeEmotions.length > 0) {
+                        <div class="section emotion-section negative">
+                            <span class="section-label negative-label">✦ Emoții negative</span>
+                            <div class="emotion-tags">
+                                @for (e of record.negativeEmotions; track e) {
+                                <span class="tag tag-negative">{{ e }}</span>
+                                }
+                            </div>
+                        </div>
+                        }
+
+                        @if (record.needs && (record.needs | keyvalue)?.length) {
+                        <div class="section">
+                            <span class="section-label">Nevoi procesate</span>
+                            <ul class="needs-list">
+                                @for (need of record.needs | keyvalue; track need.key) {
+                                <li><em>{{ need.key }}:</em> {{ need.value }}</li>
+                                }
+                            </ul>
+                        </div>
+                        }
+
+                    </mat-card-content>
+                }
+            </mat-card>
+        </cdk-virtual-scroll-viewport>
+
+        <!-- Folosim [target] pentru mba-scroll-top conform definiției sale -->
+        <mba-scroll-top [target]="viewport()"></mba-scroll-top>
+        } @else {
+        <div class="empty-state">
+            <mat-icon>history_edu</mat-icon>
+            <p>Nu ai nicio înregistrare încă. Începe prin a completa formularul!</p>
+        </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,56 @@
+// Mindfulness Theme — Sage Green Palette
+@use '@angular/material' as mat;
+
+html {
+  height: 100%;
+  @include mat.theme((
+    color: (
+      primary: mat.$green-palette,
+      tertiary: mat.$cyan-palette,
+    ),
+    typography: Nunito,
+    density: 0,
+  ));
+}
+
+body {
+  color-scheme: light;
+  background-color: #F7F5F0;
+  color: #3D3D3D;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 400;
+  margin: 0;
+  height: 100%;
+}
+
+/* Snackbar — Coordinated Mindfulness Theme */
+.success-snackbar {
+  --mdc-snackbar-container-color: #F0F4F1; // Very light sage
+  --mdc-snackbar-label-text-color: #3A6B4A; // Darker sage for text
+  --mat-snack-bar-button-color: #6B8F71;
+  
+  font-family: 'Nunito', sans-serif !important;
+  font-weight: 700 !important;
+  border-radius: 12px !important;
+  border-left: 6px solid #6B8F71 !important;
+  box-shadow: 0 8px 24px rgba(107, 143, 113, 0.2) !important;
+}
+
+.error-snackbar {
+  --mdc-snackbar-container-color: #FDF2F3; // Very light rose
+  --mdc-snackbar-label-text-color: #8B3A3E; // Darker rose for text
+  --mat-snack-bar-button-color: #C0616B;
+
+  font-family: 'Nunito', sans-serif !important;
+  font-weight: 700 !important;
+  border-radius: 12px !important;
+  border-left: 6px solid #C0616B !important;
+  box-shadow: 0 8px 24px rgba(192, 97, 107, 0.2) !important;
+}
+
+/* Ensure the action button is bold and readable */
+::ng-deep .mat-mdc-snack-bar-action {
+  font-weight: 800 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}

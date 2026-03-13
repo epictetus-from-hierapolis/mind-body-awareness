@@ -1,0 +1,123 @@
+<mat-stepper linear #stepper (selectionChange)="scrollTopOnStepChange()">
+    <mat-step [stepControl]="step1">
+        <form [formGroup]="step1">
+            <ng-template matStepLabel>Corp</ng-template>
+
+            <h3>Ce simți în corp acum?</h3>
+
+            <mat-chip-listbox aria-label="Selecție senzații" multiple formControlName="sensations">
+                @for( sensation of availableSensations(); track sensation){
+                <mat-chip-option [value]="sensation">
+                    {{ sensation }}
+                </mat-chip-option>
+                }
+            </mat-chip-listbox>
+
+            <mat-form-field appearance="outline" class="full-width" subscriptSizing="dynamic">
+                <mat-label>Ce a declanșat această stare?</mat-label>
+                <textarea matInput formControlName="rootCause"
+                    placeholder="Ex: O discuție aprinsă la muncă..."></textarea>
+            </mat-form-field>
+
+            <div class="actions right">
+                <button mat-button matStepperNext type="button" [disabled]="step1.invalid">
+                    <span>Următorul</span>
+                    <mat-icon>chevron_right</mat-icon>
+                </button>
+            </div>
+        </form>
+    </mat-step>
+
+    <mat-step [stepControl]="step2" [optional]="true">
+        <form [formGroup]="step2">
+            <ng-template matStepLabel>Pozitiv</ng-template>
+
+            <h3>Ce emoții pozitive simți?</h3>
+
+            <mat-chip-listbox multiple formControlName="posEmotions">
+                @for(posEmotion of positiveEmotions(); track posEmotion){
+                <mat-chip-option [value]="posEmotion" color="primary">
+                    {{ posEmotion }}
+                </mat-chip-option>
+                }
+            </mat-chip-listbox>
+
+            <div class="actions">
+                <button mat-button matStepperPrevious type="button">
+                    <mat-icon>chevron_left</mat-icon>
+                    <span>Înapoi</span>
+                </button>
+                <button mat-button matStepperNext type="button">
+                    <span>Următorul</span>
+                    <mat-icon>chevron_right</mat-icon>
+                </button>
+            </div>
+
+        </form>
+    </mat-step>
+
+    <mat-step [stepControl]="step3" [optional]="true">
+        <form [formGroup]="step3">
+            <ng-template matStepLabel>Negativ</ng-template>
+
+            <h3>Există și emoții mai grele?</h3>
+
+            <mat-chip-listbox multiple formControlName="negEmotions">
+                @for (emotion of negativeEmotions(); track emotion) {
+                <mat-chip-option [value]="emotion" color="warn">
+                    {{ emotion }}
+                </mat-chip-option>
+                }
+            </mat-chip-listbox>
+
+            <div class="actions">
+                <button mat-button matStepperPrevious type="button">
+                    <mat-icon>chevron_left</mat-icon>
+                    <span>Înapoi</span>
+                </button>
+                <button mat-button matStepperNext type="button">
+                    <span>Următorul</span>
+                    <mat-icon>chevron_right</mat-icon>
+                </button>
+            </div>
+        </form>
+    </mat-step>
+
+    <mat-step [stepControl]="step4">
+        <form [formGroup]="step4">
+            <ng-template matStepLabel>Nevoi</ng-template>
+
+            <h3>De ce ai nevoie pentru a gestiona aceste stări?</h3>
+            <p>Pentru fiecare emoție selectată, încearcă să identifici o nevoie (ex: siguranță, spațiu, validare).</p>
+
+            <div formGroupName="needsMap">
+                @for(item of needsMap.value | keyvalue; track item.key){
+                <div class="need-row">
+                    <mat-form-field appearance="fill" class="full-width" subscriptSizing="dynamic">
+                        <mat-label>Nevoia pentru: {{ item.key }}</mat-label>
+                        <input matInput [formControlName]="$any(item.key)" placeholder="Ex: Am nevoie de liniște...">
+                    </mat-form-field>
+                </div>
+                } @empty {
+                <div class="empty-state">
+                    <p>Nu ai selectat nicio emoție negativă. Poți finaliza înregistrarea.</p>
+                </div>
+                }
+            </div>
+
+            <div class="actions">
+                <button mat-button matStepperPrevious type="button">
+                    <mat-icon>chevron_left</mat-icon>
+                    <span>Înapoi</span>
+                </button>
+                <button mat-raised-button color="primary" type="submit" [disabled]="!canSave()" (click)="saveEntry()">
+                    <span>Finalizează Jurnalul</span>
+                    <mat-icon>done_all</mat-icon>
+                </button>
+            </div>
+        </form>
+    </mat-step>
+
+</mat-stepper>
+
+<mba-scroll-top></mba-scroll-top>

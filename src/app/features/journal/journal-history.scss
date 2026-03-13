@@ -1,0 +1,313 @@
+// ─── Mindfulness History Component ───
+
+:host {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.history-container {
+    padding: 16px 0;
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    position: relative;
+    /* Eliminăm înălțimea fixă pentru a permite flexbox să gestioneze spațiul */
+    min-height: 0; 
+    
+    @media screen and (max-width: 600px) {
+        padding: 8px 0;
+    }
+}
+
+// ─── Compact History Toolbar ───
+.history-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(135deg, rgba(107, 143, 113, 0.06) 0%, rgba(168, 213, 186, 0.08) 100%);
+    border: 1px solid rgba(107, 143, 113, 0.12);
+    border-radius: 10px;
+    padding: 6px 12px;
+    margin-bottom: 10px;
+
+    .stats-compact {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+
+        mat-icon {
+            font-size: 20px;
+            width: 20px;
+            height: 20px;
+            color: #6B8F71;
+        }
+
+        .count-number {
+            font-family: 'Nunito', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #4A6B4F;
+            line-height: 1;
+        }
+
+        .count-label {
+            font-family: 'Nunito', sans-serif;
+            font-size: 0.8rem;
+            color: #9E9E9E;
+        }
+    }
+
+    .stats-message {
+        font-family: 'Nunito', sans-serif;
+        font-size: 0.78rem;
+        font-style: italic;
+        color: #9E9E9E;
+
+        @media screen and (max-width: 600px) {
+            display: none;
+        }
+    }
+
+    .export-btn {
+        color: #C9A96E !important;
+        transition: color 0.2s ease;
+
+        &:hover {
+            color: #B8954F !important;
+        }
+    }
+}
+
+// ─── Export Menu Styling ───
+::ng-deep .mat-mdc-menu-panel {
+    background-color: #F7F5F0 !important; // Warm off-white
+    border-radius: 12px !important;
+    border: 1px solid rgba(107, 143, 113, 0.2) !important;
+    box-shadow: 0 4px 12px rgba(107, 143, 113, 0.15) !important;
+    margin-top: 4px !important;
+    min-width: 200px !important;
+
+    .mat-mdc-menu-item {
+        font-family: 'Nunito', sans-serif !important;
+        color: #4A6B4F !important;
+        min-height: 44px !important;
+
+        mat-icon {
+            color: #6B8F71 !important;
+            margin-right: 8px !important;
+        }
+
+        .mdc-list-item__primary-text {
+            font-size: 14px !important;
+            font-weight: 600 !important;
+        }
+
+        &:hover {
+            background-color: rgba(107, 143, 113, 0.08) !important;
+        }
+    }
+}
+
+.virtual-scroll-container {
+    height: 100%;
+    width: 100%;
+}
+
+// ─── Record Cards — Warm Aesthetic ───
+.record-card {
+    margin-bottom: 16px;
+    border-left: 4px solid #6B8F71;
+    border-radius: 12px !important;
+    box-shadow: 0 2px 8px rgba(107, 143, 113, 0.12) !important;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+
+    &:hover {
+        box-shadow: 0 4px 16px rgba(107, 143, 113, 0.2) !important;
+        transform: translateY(-1px);
+    }
+
+    .compact-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding: 12px 16px 8px;
+        position: relative;
+
+        .header-text {
+            flex: 1;
+        }
+
+        mat-card-title {
+            font-size: 14px !important;
+            font-weight: 700;
+            font-family: 'Nunito', sans-serif;
+            color: #4A6B4F;
+            letter-spacing: 0.01em;
+            margin: 0;
+            display: block;
+        }
+
+        mat-card-subtitle {
+            font-size: 12px !important;
+            margin: 4px 0 0 !important;
+            display: block;
+            color: #7A7A7A;
+        }
+
+        .delete-btn {
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            width: 36px;
+            height: 36px;
+            line-height: 36px;
+            opacity: 0.6;
+            transition: opacity 0.2s ease;
+
+            &:hover {
+                opacity: 1;
+            }
+
+            mat-icon {
+                font-size: 20px;
+                width: 20px;
+                height: 20px;
+            }
+        }
+    }
+
+    .compact-content {
+        padding: 0 16px 12px !important;
+    }
+}
+
+// ─── Sections ───
+.section {
+    margin-top: 8px;
+
+    &:first-child {
+        margin-top: 0;
+    }
+}
+
+.section-label {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    font-family: 'Nunito', sans-serif;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #9E9E9E;
+    margin-bottom: 4px;
+}
+
+.positive-label {
+    color: #3A6B4A;
+}
+
+.negative-label {
+    color: #8B3A3E;
+}
+
+.inline-list {
+    margin: 0;
+    font-size: 14px;
+    color: #555;
+    line-height: 1.5;
+    font-family: 'Nunito', sans-serif;
+}
+
+// ─── Emotion Tags — Soft Pastels ───
+.emotion-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.tag {
+    display: inline-block;
+    padding: 3px 12px;
+    border-radius: 14px;
+    font-size: 12px;
+    font-weight: 600;
+    font-family: 'Nunito', sans-serif;
+    line-height: 1.6;
+    transition: transform 0.15s ease;
+
+    &:hover {
+        transform: scale(1.03);
+    }
+}
+
+.tag-positive {
+    background-color: #A8D5BA;
+    color: #3A6B4A;
+}
+
+.tag-negative {
+    background-color: #E8B4B8;
+    color: #8B3A3E;
+}
+
+// ─── Needs List ───
+.needs-list {
+    margin: 4px 0 0;
+    padding-left: 18px;
+
+    li {
+        font-size: 14px;
+        color: #555;
+        line-height: 1.6;
+        font-family: 'Nunito', sans-serif;
+    }
+}
+
+// ─── Empty State ───
+.empty-state {
+    text-align: center;
+    margin-top: 60px;
+    color: #9E9E9E;
+
+    mat-icon {
+        font-size: 56px;
+        width: 56px;
+        height: 56px;
+        color: #B8C9BA;
+    }
+
+    p {
+        font-family: 'Nunito', sans-serif;
+        font-size: 15px;
+        font-weight: 400;
+        font-style: italic;
+        color: #9E9E9E;
+    }
+}
+
+// ─── Scroll to Top FAB — Sage Green ───
+.scroll-top-btn {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 1000;
+    background-color: #6B8F71 !important;
+    color: white !important;
+    opacity: 0.9;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    box-shadow: 0 3px 10px rgba(107, 143, 113, 0.4) !important;
+
+    &:hover {
+        opacity: 1;
+        transform: scale(1.08);
+    }
+
+    @media screen and (max-width: 600px) {
+        bottom: 16px;
+        right: 16px;
+    }
+}

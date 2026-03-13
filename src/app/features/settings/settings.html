@@ -1,0 +1,118 @@
+<div class="settings-container">
+    <mat-accordion multi>
+        <!-- Senzații -->
+        <mat-expansion-panel class="config-panel">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <mat-icon>accessibility</mat-icon> Senzații ({{ sensationItems().length }})
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <div class="chip-grid">
+                @for (item of sensationItems(); track item.id) {
+                <span class="config-chip">
+                    {{ item.label }}
+                    <button class="chip-remove" (click)="removeItem(item.id!)">
+                        <mat-icon>close</mat-icon>
+                    </button>
+                </span>
+                }
+            </div>
+
+            <div class="add-row">
+                <mat-form-field appearance="outline" class="add-input" subscriptSizing="dynamic">
+                    <mat-label>Adaugă senzație</mat-label>
+                    <input matInput [ngModel]="newSensation()" (ngModelChange)="newSensation.set($event)"
+                        (keyup.enter)="addItem('sensation', newSensation())" placeholder="ex: Amețeală">
+                </mat-form-field>
+                <button mat-icon-button color="primary" (click)="addItem('sensation', newSensation())" class="add-btn">
+                    <mat-icon>add_circle</mat-icon>
+                </button>
+            </div>
+
+            <div class="panel-actions">
+                <button mat-button color="warn" (click)="resetDefaults('sensation')">
+                    <mat-icon>restart_alt</mat-icon> Resetează la default
+                </button>
+            </div>
+        </mat-expansion-panel>
+
+        <!-- Emoții Pozitive -->
+        <mat-expansion-panel class="config-panel">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <mat-icon>mood_good</mat-icon> Emoții pozitive ({{ positiveEmotionItems().length }})
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <div class="chip-grid">
+                @for (item of positiveEmotionItems(); track item.id) {
+                <span class="config-chip positive">
+                    {{ item.label }}
+                    <button class="chip-remove" (click)="removeItem(item.id!)">
+                        <mat-icon>close</mat-icon>
+                    </button>
+                </span>
+                }
+            </div>
+
+            <div class="add-row">
+                <mat-form-field appearance="outline" class="add-input" subscriptSizing="dynamic">
+                    <mat-label>Adaugă emoție pozitivă</mat-label>
+                    <input matInput [ngModel]="newPositiveEmotion()" (ngModelChange)="newPositiveEmotion.set($event)"
+                        (keyup.enter)="addItem('positiveEmotion', newPositiveEmotion())" placeholder="ex: Recunoscător">
+                </mat-form-field>
+                <button mat-icon-button color="primary" (click)="addItem('positiveEmotion', newPositiveEmotion())"
+                    class="add-btn">
+                    <mat-icon>add_circle</mat-icon>
+                </button>
+            </div>
+
+            <div class="panel-actions">
+                <button mat-button color="warn" (click)="resetDefaults('positiveEmotion')">
+                    <mat-icon>restart_alt</mat-icon> Resetează la default
+                </button>
+            </div>
+        </mat-expansion-panel>
+
+        <!-- Emoții Negative -->
+        <mat-expansion-panel class="config-panel">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <mat-icon>mood_bad</mat-icon> Emoții negative ({{ negativeEmotionItems().length }})
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <div class="chip-grid">
+                @for (item of negativeEmotionItems(); track item.id) {
+                <span class="config-chip negative">
+                    {{ item.label }}
+                    <button class="chip-remove" (click)="removeItem(item.id!)">
+                        <mat-icon>close</mat-icon>
+                    </button>
+                </span>
+                }
+            </div>
+
+            <div class="add-row">
+                <mat-form-field appearance="outline" class="add-input" subscriptSizing="dynamic">
+                    <mat-label>Adaugă emoție negativă</mat-label>
+                    <input matInput [ngModel]="newNegativeEmotion()" (ngModelChange)="newNegativeEmotion.set($event)"
+                        (keyup.enter)="addItem('negativeEmotion', newNegativeEmotion())" placeholder="ex: Neputincios">
+                </mat-form-field>
+                <button mat-icon-button color="primary" (click)="addItem('negativeEmotion', newNegativeEmotion())"
+                    class="add-btn">
+                    <mat-icon>add_circle</mat-icon>
+                </button>
+            </div>
+
+            <div class="panel-actions">
+                <button mat-button color="warn" (click)="resetDefaults('negativeEmotion')">
+                    <mat-icon>restart_alt</mat-icon> Resetează la default
+                </button>
+            </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+
+    <mba-scroll-top></mba-scroll-top>
+</div>

@@ -1,0 +1,141 @@
+// ─── Mindfulness Settings Component ───
+
+:host {
+    display: block;
+    width: 100%;
+}
+
+.settings-container {
+    padding: 16px 0;
+}
+
+.settings-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #4A6B4F;
+    margin: 0 0 4px;
+
+    mat-icon {
+        color: #6B8F71;
+    }
+}
+
+.settings-subtitle {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.85rem;
+    color: #9E9E9E;
+    margin: 0 0 16px;
+}
+
+// ─── Expansion Panels ───
+.config-panel {
+    margin-bottom: 8px !important;
+    border-radius: 10px !important;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06) !important;
+
+    mat-panel-title {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-family: 'Nunito', sans-serif;
+        font-weight: 600;
+        font-size: 0.95rem;
+        color: #3D3D3D;
+
+        mat-icon {
+            font-size: 20px;
+            width: 20px;
+            height: 20px;
+            color: #6B8F71;
+        }
+    }
+}
+
+// ─── Chip Grid ───
+.chip-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 12px;
+}
+
+.config-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    padding: 4px 8px 4px 12px;
+    border-radius: 14px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    background-color: rgba(107, 143, 113, 0.1);
+    color: #4A6B4F;
+    transition: all 0.15s ease;
+
+    &.positive {
+        background-color: rgba(168, 213, 186, 0.25);
+        color: #3A6B4A;
+    }
+
+    &.negative {
+        background-color: rgba(232, 180, 184, 0.25);
+        color: #8B3A3E;
+    }
+
+    .chip-remove {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        background: none;
+        cursor: pointer;
+        padding: 0;
+        margin-left: 2px;
+        opacity: 0.5;
+        transition: opacity 0.15s ease;
+
+        mat-icon {
+            font-size: 14px;
+            width: 14px;
+            height: 14px;
+        }
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+}
+
+// ─── Add Row ───
+.add-row {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 16px; // Mărit de la 4px pentru a lăsa spațiu față de linia despărțitoare
+
+    .add-input {
+        flex: 1;
+        font-family: 'Nunito', sans-serif;
+    }
+
+    .add-btn {
+        color: #6B8F71 !important;
+    }
+}
+
+// ─── Panel Actions ───
+.panel-actions {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 4px;
+    border-top: 1px solid #E0DDD5;
+
+    button {
+        font-family: 'Nunito', sans-serif !important;
+        font-size: 0.8rem !important;
+    }
+}

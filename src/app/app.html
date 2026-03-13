@@ -1,0 +1,77 @@
+<style>
+  :host {
+    font-family: 'Nunito', sans-serif;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    display: flex;
+    flex-direction: column;
+    height: 100dvh;
+    background-color: #F7F5F0;
+    overflow: hidden; /* Previne scroll-ul pe body */
+  }
+
+  main {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 0 0.5rem 0; /* Eliminăm padding-ul de jos */
+    box-sizing: inherit;
+    overflow: hidden; 
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .content {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Stretching complet */
+  }
+
+  @media screen and (max-width: 600px) {
+    main {
+      padding: 0 2px;
+    }
+  }
+</style>
+
+<main class="main">
+  <div class="content">
+    <mat-toolbar>
+      <mat-icon class="toolbar-icon">spa</mat-icon>
+      <span>Mind-Body Awareness</span>
+    </mat-toolbar>
+
+    <div class="main-container">
+      <mat-tab-group [selectedIndex]="activeTabIndex()" (selectedIndexChange)="activeTabIndex.set($event)">
+        <mat-tab label="✏️ Jurnal Nou">
+          <ng-template matTabContent>
+            <div class="tab-content">
+              <mba-journal-form (saved)="activeTabIndex.set(1)"></mba-journal-form>
+            </div>
+          </ng-template>
+        </mat-tab>
+        
+        <mat-tab label="📖 Istoric">
+          <ng-template matTabContent>
+            <div class="tab-content">
+              <mba-journal-history></mba-journal-history>
+            </div>
+          </ng-template>
+        </mat-tab>
+        
+        <mat-tab label="⚙️ Setări">
+          <ng-template matTabContent>
+            <div class="tab-content">
+              <mba-settings></mba-settings>
+            </div>
+          </ng-template>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</main>
+
+<router-outlet />

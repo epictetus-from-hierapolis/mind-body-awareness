@@ -1,0 +1,264 @@
+// ─── Mindfulness Journal Form ───
+
+.full-width {
+    width: 100%;
+}
+
+mat-chip-listbox {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.need-row {
+    margin-bottom: 2px;
+    animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.empty-state {
+    padding: 16px;
+    background: linear-gradient(135deg, #f0ede6 0%, #e8e4dc 100%);
+    border-radius: 12px;
+    text-align: center;
+    margin-bottom: 10px;
+    color: #7A7A7A;
+    font-style: italic;
+}
+
+h3 {
+    margin: 12px 0 6px 0 !important;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #4A6B4F;
+    font-family: 'Nunito', sans-serif;
+}
+
+p {
+    margin: 0 0 8px 0 !important;
+    font-size: 0.9rem;
+    color: #7A7A7A;
+}
+
+.actions {
+    margin-top: 12px !important;
+    padding-bottom: 16px !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &.right {
+        justify-content: flex-end;
+    }
+
+        button {
+            font-family: 'Nunito', sans-serif !important;
+            font-weight: 600 !important;
+            border-radius: 8px !important;
+            display: inline-flex !important;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+
+            mat-icon {
+                font-size: 18px;
+                width: 18px;
+                height: 18px;
+                margin: 0;
+            }
+        }
+}
+
+// ─── Stepper Overrides ───
+:host ::ng-deep {
+    mat-stepper, .mat-stepper-horizontal {
+        overflow: visible !important;
+    }
+
+    // Stepper header
+    .mat-horizontal-stepper-header-container {
+        height: 56px !important;
+        padding: 0 !important;
+        margin: 0 -4px !important;
+        width: calc(100% + 8px) !important;
+        box-sizing: border-box;
+        position: sticky !important;
+        top: 0; // Aliniat direct sub taburi
+        z-index: 10;
+        background-color: #F7F5F0 !important;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+
+    // Connector line — nu se suprapune cu textul
+    .mat-stepper-horizontal-line {
+        margin: 0 -4px !important;
+        min-width: 16px !important;
+    }
+
+    .mat-step-header {
+        height: 56px !important;
+        padding: 0 12px !important;
+        border-radius: 0 !important;
+
+        &[aria-selected="true"] {
+            background-color: rgba(107, 143, 113, 0.08) !important;
+        }
+
+        &:hover:not([aria-disabled="true"]) {
+            background-color: rgba(107, 143, 113, 0.12) !important;
+        }
+
+        &[aria-disabled="true"] {
+            cursor: default !important;
+            pointer-events: none;
+            
+            &:hover {
+                background-color: transparent !important;
+            }
+        }
+
+        .mat-step-header-ripple {
+            display: none !important;
+        }
+
+        // Step icon — sage green
+        .mat-step-icon {
+            width: 24px !important;
+            height: 24px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            overflow: visible !important;
+            background-color: #6B8F71 !important;
+
+            .mat-icon {
+                width: 16px !important;
+                height: 16px !important;
+                font-size: 16px !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                overflow: visible !important;
+            }
+        }
+
+        // Inactive/edit step icon
+        .mat-step-icon-not-touched {
+            background-color: #B8C9BA !important;
+        }
+
+        .mat-step-label {
+            font-size: 14px !important;
+            font-family: 'Nunito', sans-serif !important;
+            font-weight: 600 !important;
+        }
+
+        .mat-step-label-active {
+            color: #4A6B4F !important;
+        }
+    }
+
+    @media screen and (max-width: 600px) {
+        .mat-horizontal-stepper-header-container {
+            padding: 0 2px;
+        }
+
+        .mat-step-header {
+            padding: 0 !important;
+
+            .mat-step-label {
+                font-size: 10px;
+            }
+
+            .mat-step-icon {
+                width: 20px !important;
+                height: 20px !important;
+
+                .mat-icon {
+                    width: 14px !important;
+                    height: 14px !important;
+                    font-size: 14px !important;
+                }
+            }
+        }
+    }
+
+    // ─── Form Fields ───
+    .mat-mdc-form-field {
+        margin-bottom: 10px !important;
+        width: 100%;
+    }
+
+    // ─── Chips — Mindfulness Pill Style ───
+    .mat-chip-listbox {
+        .mat-mdc-chip-set-chips {
+            gap: 4px !important;
+        }
+    }
+
+    .mat-mdc-standard-chip {
+        --mdc-chip-label-text-size: 12px;
+        min-height: 28px !important;
+        border-radius: 14px !important;
+        font-family: 'Nunito', sans-serif !important;
+        font-weight: 500 !important;
+        transition: all 0.2s ease;
+
+        .mdc-evolution-chip__cell--primary {
+            padding-left: 8px !important;
+            padding-right: 8px !important;
+        }
+
+        // Hide checkmark on selection
+        .mat-mdc-chip-selected-icon,
+        .mat-mdc-chip-graphic,
+        .mdc-evolution-chip__graphic {
+            display: none !important;
+        }
+
+        .mdc-evolution-chip__cell--primary {
+            padding-left: 10px !important;
+            padding-right: 10px !important;
+        }
+    }
+
+    // Selected chip — sage green fill
+    .mat-mdc-chip-selected {
+        background-color: #6B8F71 !important;
+        color: white !important;
+
+        .mdc-evolution-chip__text-label {
+            color: white !important;
+        }
+    }
+
+    // Stepper content container
+    .mat-horizontal-content-container {
+        padding: 0 !important;
+        overflow: hidden !important; 
+        position: relative;
+        z-index: 1; // Sub antet
+    }
+
+    // Clip individual step content to be absolutely sure
+    .mat-step-content {
+        padding: 0 0 32px 0 !important;
+        overflow: hidden !important; 
+    }
+
+    @media screen and (max-width: 600px) {
+        .mat-step-content {
+            padding: 0 0 24px 0 !important;
+        }
+    }
+}
