@@ -1,5 +1,3 @@
-![Mind-Body Awareness Banner](public/mba-hero.png)
-
 # Mind-Body Awareness (MBA) 🌿🧘‍♂️
 
 **Mind-Body Awareness** is a minimalist, premium journaling application designed to deepen the connection between physical sensations and emotional states. Built with a "Privacy-First" philosophy, it provides a serene space for self-reflection without compromising personal data.
